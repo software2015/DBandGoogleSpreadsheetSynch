@@ -1,0 +1,12 @@
+- @page_title = t('.title', :query => params[:query])
+
+%section.page
+  
+  - if @result.empty?
+    %p.noSearchResults= t('.no_results', :query => params[:query])
+  - else
+    %h1= t('.title', :query => params[:query])
+    %p.searchSummary= documentation_search_summary(@result)
+    = documentation_search_results(@result)        
+    %p.pagination= documentation_search_pagination(@result, :link_class => 'button')
+    

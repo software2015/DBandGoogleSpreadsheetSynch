@@ -1,0 +1,13 @@
+current directory: /home/compdriver/Desktop/railsWorkspace/DBandGoogleSpreadsheetSynch/thout/gems/json-2.1.0/ext/json
+/usr/share/rvm/rubies/ruby-2.4.4/bin/ruby -r ./siteconf20181005-2561-igassu.rb extconf.rb
+creating Makefile
+
+current directory: /home/compdriver/Desktop/railsWorkspace/DBandGoogleSpreadsheetSynch/thout/gems/json-2.1.0/ext/json
+make "DESTDIR=" clean
+
+current directory: /home/compdriver/Desktop/railsWorkspace/DBandGoogleSpreadsheetSynch/thout/gems/json-2.1.0/ext/json
+make "DESTDIR="
+make: Nothing to be done for 'all'.
+
+current directory: /home/compdriver/Desktop/railsWorkspace/DBandGoogleSpreadsheetSynch/thout/gems/json-2.1.0/ext/json
+make "DESTDIR=" install
