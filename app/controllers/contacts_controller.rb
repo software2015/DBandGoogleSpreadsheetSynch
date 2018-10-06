@@ -1,6 +1,6 @@
 require "google_drive"
-class ContactsController < ApplicationController
 
+class ContactsController < ApplicationController
 
 	def new_contact
 		@contact = Contact.new
@@ -11,10 +11,10 @@ class ContactsController < ApplicationController
 		if @contact.save
 
 	session = GoogleDrive::Session.from_config("client_secret.json")
-	spreadsheet = session.spreadsheet_by_title("Hello")
+	spreadsheet = session.spreadsheet_by_title("Contacts")
 	worksheet = spreadsheet.worksheets.first
 
-			worksheet.insert_rows(2, [[contact_params[:name],contact_params[:phone] ]])
+			worksheet.insert_rows(2, [[@contact.id,@contact.name,@contact.phone ]])
 			worksheet.save
 
 		else
