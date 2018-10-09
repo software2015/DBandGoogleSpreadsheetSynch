@@ -1,4 +1,4 @@
 class Contact < ApplicationRecord
-	validates :name, :phone, presence:true
-	validates :phone, presence:true	
+	validates :name, presence:true, length: { maximum: 50}
+	validates :phone, phone: { possible: true, allow_blank: false, countries: :ru}
 end

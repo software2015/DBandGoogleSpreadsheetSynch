@@ -1,17 +1,60 @@
-<h1>Sign up</h1>
+<script type="text/javascript">
 
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_for(@contact, url: save_contact_path) do |f| %>
+var app = angular.module('sendContact', []);
+app.controller('sendContactController',function($scope) {
 
-      <%= f.label :name %>
-      <%= f.text_field :name, class: 'form-control' %>
+$scope.blockStatus = "hidden";
+$scope.submitError = "";
+$scope.phoneNumberPat = /^((\+7|7|8)+([0-9]){10})$/;
+$scope.guestNamePat = /^[[a-zA-Zа-яА-Я]+(([',. -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)]{0,30}$/;
+$scope.guestName = "";
+$scope.guestPhoneNum = "";
+$scope.hello = "Yes"
 
-      <%= f.label :phone %>
-      <%= f.text_field :phone, class: 'form-control' %>
+$scope.buttonClick = function(){
+  if($scope.blockStatus == "hidden"){
+    $scope.blockStatus = "block";
+  }else{
+    $scope.blockStatus = "hidden";
+  }
+};
 
-			<%= f.submit "Create my account", class: "btn btn-primary" %>
+$scope.onSubmit = function($event){
 
+};
+
+$scope.submit = function($event) {
+  $event.preventDefault();
+}
+
+});
+
+</script>
+
+
+<div id="mainDiv" class="w3-container" ng-app="sendContact" ng-controller="sendContactController">
+<button ng-click="buttonClick()" class="w3-button w3-green w3-large">Заказать звонок</button>
+  <div id="" class="w3-modal" style="display:{{blockStatus}}">
+    <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:400px">
+ 
+    <%= form_for(@contact, url: save_contact_path, data: { 'ng-submit' => 'onSubmit($event)'}, html: { class:"w3-container", novalidate:"true" }) do |f| %>
+      <div class="w3-section">
+
+        <b>Имя</b>
+        <%= f.text_field :name, class:"w3-input w3-border w3-margin-bottom", data: {'ng-model' => 'guestName'}%>
+
+        <b>Номер телефона</b>
+        <%= f.text_field :phone, class:"w3-input w3-border", data: {'ng-model' => 'guestPhoneNum'} %>
+
+  			<%= f.submit "Отправить", class: "w3-button w3-block w3-green w3-section w3-padding" %>
+        <%= render 'shared/error_messages' %>
+      </div>
   	<% end %>
+
+    <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+      <button data-ng-click="buttonClick()" type="button" class="w3-button w3-red">Отмена</button>
+    </div>    
+
+    </div>
   </div>
 </div>

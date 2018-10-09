@@ -115,6 +115,7 @@ GEM
       mini_portile2 (~> 2.3.0)
     os (1.0.0)
     pg (0.20.0)
+    phonelib (0.6.25)
     public_suffix (3.0.3)
     puma (3.9.1)
     rack (2.0.5)
@@ -213,6 +214,7 @@ DEPENDENCIES
   jquery-rails (= 4.3.1)
   listen (= 3.1.5)
   pg (= 0.20.0)
+  phonelib
   puma (= 3.9.1)
   rails (= 5.1.6)
   sass-rails (= 5.0.6)
