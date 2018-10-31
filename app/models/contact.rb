@@ -6,16 +6,16 @@ class Contact < ApplicationRecord
 	after_initialize :default_values
 
 	def default_values
-		@step = 10
+		@step = 1000
 		@maxColumns = 7
 		@skip = 1
-		@workshTitles = ["ID","Имя","Номер","Дата","Повтор","Отказ","Заказ"]
+		@workshTitles = Contact.column_names.map{|x| I18n.t(x)}#["ID","Имя","Номер","Дата","Повтор","Отказ","Заказ"]   #I18n.t(:xyz)
 	end
 
 	def initialInsertion #run it with break longer than 1 minute
-		Contact.where('addrow2="отказ"').all.delete_all
+		#Contact.where('addrow2="отказ"').all.delete_all
 		maxInDb = Contact.all.count
-		lastContactId = 0
+		last_contact_id = 0
 		step = @step
 		maxColumns = @maxColumns
 		skip = @skip
@@ -30,11 +30,11 @@ class Contact < ApplicationRecord
 		worksheet.first.save
 
 		while(maxInDb > 0) do
-			rowsFromDB = Contact.where("id>#{lastContactId}").limit(step).order(id: :asc)
-			lastContactId = rowsFromDB.last.id
-			maxInDb -= rowsFromDB.count
+			rows_from_db = Contact.where("id>#{last_contact_id}").limit(step).order(id: :asc)
+			last_contact_id = rows_from_db.last.id
+			maxInDb -= rows_from_db.count
 			worksheet = spreadsheet.worksheets						 
-			worksheet.last.insert_rows(1,objectToArray(rowsFromDB))
+			worksheet.last.insert_rows(1,objectToArray(rows_from_db))
 			worksheet.last.save
 			if maxInDb > 0
 				spreadsheet.add_worksheet("#{worksheet.count + 1}", max_rows = 1, max_cols = maxColumns)
