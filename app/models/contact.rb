@@ -47,7 +47,7 @@ class Contact < ApplicationRecord
 
 		if(Time.now.localtime.hour == 1 && (Time.now.localtime.min >= 0 && Time.now.localtime.min <=10))
 			return
-		elsif(Time.now.localtime.wday == 1 && (Time.localtime.now.hour == 2 && (Time.localtime.now.min >= 0 && Time.localtime.now.min <=20)))
+		elsif(Time.now.localtime.wday == 1 && (Time.now.localtime.hour == 2 && (Time.now.localtime.min >= 0 && Time.now.localtime.min <=20)))
 			return
 		end
 			
