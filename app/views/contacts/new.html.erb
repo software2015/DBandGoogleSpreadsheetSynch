@@ -37,7 +37,7 @@ $scope.submit = function($event) {
   <div id="" class="w3-modal" style="display:{{blockStatus}}">
     <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:400px">
  
-    <%= form_for(@contact, url: save_contact_path, data: { 'ng-submit' => 'onSubmit($event)'}, html: { class:"w3-container", novalidate:"true" }) do |f| %>
+    <%= form_for(@contact, data: { 'ng-submit' => 'onSubmit($event)'}, html: { class:"w3-container", novalidate:"true" }) do |f| %>
       <div class="w3-section">
 
         <b>Имя</b>

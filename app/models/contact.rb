@@ -5,6 +5,7 @@ class Contact < ApplicationRecord
 	validates :phone, phone: { possible: true, allow_blank: false, countries: :ru }
 	after_initialize :default_values
 
+
 	def default_values
 		@step = 10
 		@maxColumns = 7
@@ -55,7 +56,7 @@ class Contact < ApplicationRecord
 		skip = @skip
 		maxColumns = @maxColumns
 
-		session = GoogleDrive::Session.from_config("client_secret.json")
+		session = GoogleDrive::Session.from_config(client_secret.json)
 		spreadsheet = session.spreadsheet_by_title("contactsSpreadsheet")
 		worksheet = spreadsheet.worksheets
 		currentRowsNum = worksheet.last.num_rows

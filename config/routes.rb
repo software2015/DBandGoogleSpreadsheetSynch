@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
-	root 'contacts#new_contact'
-  post  '/save_contact',    to: 'contacts#save_contact'
+	root 'contacts#new'
+	resources :contacts
 end

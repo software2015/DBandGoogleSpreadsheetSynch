@@ -1,22 +1,17 @@
-require "google_drive"
-
 class ContactsController < ApplicationController
 
-	def new_contact
+	def new
 		@contact = Contact.new
 	end
 
-	def save_contact
+	def create
 		@contact = Contact.new(contact_params)
 		if @contact.save
-
-			render 'new_contact'
-
+			redirect_to :new_contact
 		else
-			render 'new_contact'
+			render :new
 		end	
 	end
-
 
 	private
 
