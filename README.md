@@ -5,14 +5,14 @@ It takes names and phone numbers, saves them in database and inserts them to bou
 It also synchronizes database with spreadsheet once a day.
 It has three rake tasks for data synchronization:
 
- 	1. update_worksheet
- 	2. synchronize_database
- 	3. initial_insertion
+	1. update_worksheet
+	2. synchronize_database
+	3. initial_insertion
 
 ### Tech stack:
 
- 	* Rails version 5.1.6.2
-	* Default development database: Sqlite3
+* Rails version 5.1.6.2
+* Default development database: Sqlite3
 
 ### Steps for running the app:
 
